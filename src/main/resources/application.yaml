@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: reactive-exception-handling
+server:
+  error:
+    include-message: always
