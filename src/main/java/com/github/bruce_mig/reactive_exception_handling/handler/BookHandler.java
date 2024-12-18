@@ -2,7 +2,7 @@ package com.github.bruce_mig.reactive_exception_handling.handler;
 
 import com.github.bruce_mig.reactive_exception_handling.dao.BookRepository;
 import com.github.bruce_mig.reactive_exception_handling.dto.Book;
-import com.github.bruce_mig.reactive_exception_handling.exception.BookAIException;
+import com.github.bruce_mig.reactive_exception_handling.exception.BookAPIException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -28,7 +28,7 @@ public class BookHandler {
         Mono<Book> bookMono = bookRepository.getBooks()
                 .filter(book -> book.getBookId() == id)
                 .next()
-                .switchIfEmpty(Mono.error(new BookAIException("Book not found with bookId : " + id)));
+                .switchIfEmpty(Mono.error(new BookAPIException("Book not found with bookId : " + id)));
         return ServerResponse.ok().body(bookMono, Book.class);
     }
 }

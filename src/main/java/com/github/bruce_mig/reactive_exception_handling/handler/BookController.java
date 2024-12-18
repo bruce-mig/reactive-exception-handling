@@ -2,7 +2,7 @@ package com.github.bruce_mig.reactive_exception_handling.handler;
 
 import com.github.bruce_mig.reactive_exception_handling.dao.BookRepository;
 import com.github.bruce_mig.reactive_exception_handling.dto.Book;
-import com.github.bruce_mig.reactive_exception_handling.exception.BookAIException;
+import com.github.bruce_mig.reactive_exception_handling.exception.BookAPIException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +30,6 @@ public class BookController {
         return repository.getBooks()
                 .filter(book -> book.getBookId() == id)
                 .next()
-                .switchIfEmpty(Mono.error(new BookAIException("Book not found with id " + id)));
+                .switchIfEmpty(Mono.error(new BookAPIException("Book not found with id " + id)));
     }
 }
