@@ -17,10 +17,10 @@ public class AppRouterConfig {
         this.bookHandler = bookHandler;
     }
 
-/*    @Bean
+    @Bean
     public WebProperties.Resources resources() {
         return new WebProperties.Resources();
-    }*/
+    }
 
     @Bean
     public RouterFunction<ServerResponse> routerFunction() {
